@@ -2,6 +2,6 @@
 
 CloudFormation (CF) templates, are JSON files instructing Amazon on how to configure its services to create an application.
 
-This file tells Amazon where to get the docker images for mongodb and tomcat, and then creates a service and endpoint in Amazon's cloud.
+This file tells Amazon where to get the docker images for MongoDB and Tomcat, and then creates a service and endpoint in Amazon's cloud.
 
-For more information about CloudFormation see, http://aws.amazon.com/cloudformation/.
+For more information about CloudFormation see http://aws.amazon.com/cloudformation/.
