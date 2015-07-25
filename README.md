@@ -1,6 +1,5 @@
-# docker-hellomongo
-The hellomongo webapp dockerized
---------------------------------
+# The hellomongo webapp dockerized
+
 boot2docker
 -----------
 To run locally use [boot2docker](http://boot2docker.io/)
