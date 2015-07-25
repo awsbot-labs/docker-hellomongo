@@ -56,3 +56,5 @@ Included in this template are:
   * **load-balancers**, http://aws.amazon.com/elasticloadbalancing/
   * **Docker containers**, http://aws.amazon.com/ecs/
   * **Availability, scaling, compute and security**, http://aws.amazon.com/ec2/
+
+Available for hire at home or abroad. Love and kisses David. x
