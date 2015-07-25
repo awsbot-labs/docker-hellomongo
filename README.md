@@ -3,7 +3,7 @@ The hellomongo webapp dockerized
 --------------------------------
 boot2docker
 -----------
-To run locally use **boot2docker**: http://boot2docker.io/
+To run locally use [boot2docker](http://boot2docker.io/)
 
 If you're feeling lucky run
 ```
@@ -21,7 +21,7 @@ Connect to Tomcat on:
 ```  
 AWS Elastic Container Service (ECS)
 --------------------------------------
-This requires the aws-cli: http://aws.amazon.com/cli/, and leverages ECS via CloudFormation. Run aws.sh:
+This requires the [aws-cli:](http://aws.amazon.com/cli/), and leverages ECS via CloudFormation. Run aws.sh:
 ```
   ./aws.sh MyAWSSshKey fivesofwarmers.com
 ```
@@ -47,7 +47,7 @@ Now the **Docker** container is in the Cloud, it is available to Amazon and can 
 The automated configuration of Amazon is controlled by the **CloudFormation** service and **JSON template**. 
 
 ### CloudFormation
-The CloudFormation template: `aws/cf/template.json` orchestrates a virtualized environment by configuring services in AWS, http://aws.amazon.com/cloudformation/,
+The CloudFormation template: `aws/cf/template.json` orchestrates a virtualized environment by configuring services in AWS,
 
 Included in this template are:
 
