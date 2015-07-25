@@ -51,9 +51,25 @@ The CloudFormation template: `aws/cf/template.json` orchestrates a virtualized e
 
 Included in this template are:
 
-  * **DNS records**, http://aws.amazon.com/route53/
-  * **load-balancers**, http://aws.amazon.com/elasticloadbalancing/
-  * **Docker containers**, http://aws.amazon.com/ecs/
-  * **Availability, scaling, compute and security**, http://aws.amazon.com/ec2/
+  * **DNS Records**
+  * **Loadbalancers**
+  * **Docker containers**
+  * **IP Security**
+  * **Scaling and availabilty**
+  * **compute and many more...**
+
+## Further reading
+
+ * **boot2docker** http://boot2docker.io/
+ * **docker-compose** https://docs.docker.com/compose/
+ * **Dockerfile** https://docs.docker.com/reference/builder/
+ * **aws-cli** http://aws.amazon.com/cli/
+ * **boto** https://boto.readthedocs.org/en/latest/index.html
+ * **ECS*** http://aws.amazon.com/ecs/
+ * **route53** http://aws.amazon.com/route53/
+ * **AutoScaling** http://aws.amazon.com/autoscaling/
+ * **CloudFormation** http://aws.amazon.com/cloudformation/
+ * **Elastic Loadbalancers**, http://aws.amazon.com/elasticloadbalancing/
+ * **Compute** http://aws.amazon.com/ec2/
 
 Available for hire at home or abroad. Love and kisses David. x
