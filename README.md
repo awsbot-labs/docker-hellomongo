@@ -1,50 +1,58 @@
 # docker-hellomongo
-The hellomongo webapp dockerized.
+The hellomongo webapp dockerized
+--------------------------------
+boot2docker
+-----------
+To run locally use **boot2docker**: http://boot2docker.io/
 
-To run this docker-compose project simply checkout this repo, and run 
+If you're feeling lucky run 
+
+  `./boot2docker.sh`
+  
+The main command to note is, 
 
   `docker-compose up -d`
   
-(presuming you have installed docker on your server)
+which creates the containers and daemonizes them. 
 
-# boot2docker
-To run this docker in a development environment install the boot2docker application, instructions on how to do this can be found here: http://boot2docker.io/
-
-Then run:
-
-  `docker-compose up -d`
-
-and you should be able to connect to the app on:
+Connect to Tomcat on:
 
   `curl http://$(boot2docker ip)`
   
+AWS Elastic Container Service (ECS)
+--------------------------------------
+This requires the aws-cli: http://aws.amazon.com/cli/, and leverages ECS via CloudFormation.
 
+Run aws.sh:
 
-# Amazon Elastic Container Service (ECS)
-This is slightly more envolved and requires access to an Amazon Web Services account.
-
-To deploy this via Amazon's Elastics Containter Service, install the aws-cli, instructions on how to do this and configure the application can be found here: http://aws.amazon.com/cli/
-
-Configure the aws-cli tools:
-
-  `aws configure`
+  `./aws.sh MyAWSSshKey fivesofwarmers.com`
   
-Note: you will require an AWS access key ID and secret access key, http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
+# How does it work?
+Containers (heavily namespaced processes) are connected via iptables (ports) and /etc/hosts entries (links).
+## docker-compose.yml
+This file instructs Docker on the containers (images) to create and how to connect them (*mongo* and **dcrbsltd/hellomongo_tomcat** images in this example).
+### Containers/images
+The **dcrbsltd/hellomongo_tomcat** container is a **custom image** built from a base image.
+#### Building an image
+`cd` into the "tomcat" directory - the **Dockerfile** instructs Docker on how to install apps and files.
 
-Register the task definition:
+  `docker build -t yourdockername/hellomongo_tomcat .`
+#### Upload (push) the image
+Push the image to Docker hub.
 
-  `aws ecs register-task-definition --cli-input-json file://aws/ecs/task_definition_.json`
+  `docker push yourdockername/hellomongo_tomcat`
   
-Create the cluster:
+## AWS
+Now the **Docker** container is in the Cloud, it is available to Amazon and can be used by its **ECS** service.
 
-  `aws ecs create-cluster --cluster-name hellomongo`
-  
-Create a cloudformation stack with the Container autoscaling groups and elastic loadbalancer, note that you will need to pass the name of an SSH Key and an IP address range (i.e. whatsmyip) to connect from:
+The automated configuration of Amazon is controlled by the **CloudFormation** service and **JSON template**. 
 
-  `aws cloudformation create-stack --stack-name hellomongo --template-body file://aws/cf/template.json --parameters ParameterKey=SSHLocation,ParameterValue=99.99.99.99/32 ParameterKey=KeyName,ParameterValue=HelloMongo --capabilities CAPABILITY_IAM`
+### CloudFormation
+The CloudFormation template: `aws/cf/template.json` orchestrates a virtualized environment by configuring services in AWS, http://aws.amazon.com/cloudformation/,
 
-Finally run the task definition in the cluster:
+Included in this template are:
 
-  `aws ecs run-task --cluster hellomongo --task-definition hellomongo:1 --count 1`
-  
-Ans monitor the status od the task definition in the console, once completed succesfully, the EC2 instance should connect to the loadbalancer, and you should then be able to connect to the Elastic Loadbalancer endpoint to view the webapp.
+  * **DNS records**, http://aws.amazon.com/route53/
+  * **load-balancers**, http://aws.amazon.com/elasticloadbalancing/
+  * **Docker containers**, http://aws.amazon.com/ecs/
+  * **Availability, scaling, compute and security**, http://aws.amazon.com/ec2/
