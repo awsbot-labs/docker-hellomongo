@@ -5,11 +5,11 @@ boot2docker
 -----------
 To run locally use **boot2docker**: http://boot2docker.io/
 
-If you're feeling lucky run,
+If you're feeling lucky run
 ```
   ./boot2docker.sh
 ```
-The main command to note is, 
+The main command to note is:
 ```
   docker-compose up -d
 ```  
@@ -21,12 +21,10 @@ Connect to Tomcat on:
 ```  
 AWS Elastic Container Service (ECS)
 --------------------------------------
-This requires the aws-cli: http://aws.amazon.com/cli/, and leverages ECS via CloudFormation.
-
-Run aws.sh:
-
-  `./aws.sh MyAWSSshKey fivesofwarmers.com`
-  
+This requires the aws-cli: http://aws.amazon.com/cli/, and leverages ECS via CloudFormation. Run aws.sh:
+```
+  ./aws.sh MyAWSSshKey fivesofwarmers.com
+```
 # How does it work?
 Containers (heavily namespaced processes) are connected via iptables (ports) and /etc/hosts entries (links).
 ## docker-compose.yml
@@ -35,13 +33,14 @@ This file instructs Docker on the containers (images) to create and how to conne
 The **dcrbsltd/hellomongo_tomcat** container is a **custom image** built from a base image.
 #### Building an image
 `cd` into the "tomcat" directory - the **Dockerfile** instructs Docker on how to install apps and files.
-
-  `docker build -t yourdockername/hellomongo_tomcat .`
+```
+  docker build -t yourdockername/hellomongo_tomcat .
+```
 #### Upload (push) the image
 Push the image to Docker hub.
-
+```
   `docker push yourdockername/hellomongo_tomcat`
-  
+```
 ## AWS
 Now the **Docker** container is in the Cloud, it is available to Amazon and can be used by its **ECS** service.
 
