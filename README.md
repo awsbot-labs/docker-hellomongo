@@ -7,11 +7,11 @@ To run locally use **boot2docker**: http://boot2docker.io/
 
 If you're feeling lucky run 
 
-  `./boot2docker.sh`
+> `./boot2docker.sh`
   
 The main command to note is, 
 
-  `docker-compose up -d`
+> `docker-compose up -d`
   
 which creates the containers and daemonizes them. 
 
