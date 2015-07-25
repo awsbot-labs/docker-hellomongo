@@ -5,20 +5,20 @@ boot2docker
 -----------
 To run locally use **boot2docker**: http://boot2docker.io/
 
-If you're feeling lucky run 
-
-> `./boot2docker.sh`
-  
+If you're feeling lucky run,
+```
+  ./boot2docker.sh
+```
 The main command to note is, 
-
-> `docker-compose up -d`
-  
+```
+  docker-compose up -d
+```  
 which creates the containers and daemonizes them. 
 
 Connect to Tomcat on:
-
-  `curl http://$(boot2docker ip)`
-  
+```
+  curl http://$(boot2docker ip)
+```  
 AWS Elastic Container Service (ECS)
 --------------------------------------
 This requires the aws-cli: http://aws.amazon.com/cli/, and leverages ECS via CloudFormation.
