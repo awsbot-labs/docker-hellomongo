@@ -22,7 +22,7 @@ AWS Elastic Container Service (ECS)
 --------------------------------------
 This requires the [aws-cli:](http://aws.amazon.com/cli/), and leverages ECS via CloudFormation. Run aws.sh:
 ```
-  ./aws.sh MyAWSSshKey fivesofwarmers.com
+  ./aws.sh MyAWSSshKey example.com
 ```
 # How does it work?
 Containers (heavily namespaced processes) are connected via iptables (ports) and /etc/hosts entries (links).
@@ -38,7 +38,7 @@ The **dcrbsltd/hellomongo_tomcat** container is a **custom image** built from a 
 #### Upload (push) the image
 Push the image to Docker hub.
 ```
-  `docker push yourdockername/hellomongo_tomcat`
+  docker push yourdockername/hellomongo_tomcat
 ```
 ## AWS
 Now the **Docker** container is in the Cloud, it is available to Amazon and can be used by its **ECS** service.
@@ -55,7 +55,7 @@ Included in this template are:
   * **Docker containers**
   * **IP Security**
   * **Scaling and availabilty**
-  * **compute and many more...**
+  * **Compute and many more...**
 
 ## Further reading
 
