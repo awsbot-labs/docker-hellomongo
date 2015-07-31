@@ -1,4 +1,4 @@
-# The [hellomongo](http://hellomongo.thedotts.com/) webapp dockerized
+# The hellomongo webapp dockerized
 
 boot2docker
 -----------
