@@ -353,55 +353,6 @@
                     "Ref": "ECSTaskDefinition"
                 }
             }
-        },
-        "RecordSetGroup": {
-            "Type": "AWS::Route53::RecordSetGroup",
-            "Properties": {
-                "HostedZoneName": {
-                    "Fn::Join": [
-                        "",
-                        [
-                            {
-                                "Ref": "DNSDomain"
-                            },
-                            "."
-                        ]
-                    ]
-                },
-                "Comment": "The hellomongo HTTP application",
-                "RecordSets": [
-                    {
-                        "Name": {
-                            "Fn::Join": [
-                                "",
-                                [
-                                    "hellomongo.",
-                                    {
-                                        "Ref": "DNSDomain"
-                                    },
-                                    "."
-                                ]
-                            ]
-                        },
-                        "Type": "A",
-                        "AliasTarget": {
-                            "DNSName": {
-                                "Fn::GetAtt": [
-                                    "ElasticLoadBalancer",
-                                    "DNSName"
-                                ]
-                            },
-                            "EvaluateTargetHealth": "true",
-                            "HostedZoneId": {
-                                "Fn::GetAtt": [
-                                    "ElasticLoadBalancer",
-                                    "CanonicalHostedZoneNameID"
-                                ]
-                            }
-                        }
-                    }
-                ]
-            }
         }
     },
     "Outputs": {
