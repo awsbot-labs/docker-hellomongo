@@ -71,4 +71,3 @@ Included in this template are:
  * **Elastic Loadbalancers**, http://aws.amazon.com/elasticloadbalancing/
  * **Compute** http://aws.amazon.com/ec2/
 
-Available for hire at home or abroad. Love and kisses David. x
